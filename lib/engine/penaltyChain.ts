@@ -165,11 +165,12 @@ export function acceptPenalty(state: GameState, playerId: number): GameState {
  * @param discardPile - The current discard pile (index 0 = top card).
  * @returns The last non-Joker suit found, or `null` if none can be determined.
  */
+
 export function getPreJokerSuit(
   chainCards: Card[],
   discardPile: Card[],
 ): Suit | null {
-  // Walk from the most-recent chain card backwards, skipping JOKERs.
+  // Walk from the most‑recent chain card backwards, skipping JOKERs.
   for (let i = chainCards.length - 1; i >= 0; i--) {
     const card = chainCards[i];
     if (card.rank !== "JOKER" && card.suit !== null) {
@@ -177,11 +178,11 @@ export function getPreJokerSuit(
     }
   }
 
-  // All chain cards were JOKERs — fall back to the card under the Joker in
-  // the discard pile (index 1, since index 0 is the Joker itself).
-  const cardUnderJoker = discardPile[1];
-  if (cardUnderJoker?.suit != null) {
-    return cardUnderJoker.suit;
+  for (let i = 1; i < discardPile.length; i++) {
+    const card = discardPile[i];
+    if (card.rank !== "JOKER" && card.suit !== null) {
+      return card.suit;
+    }
   }
 
   return null;
