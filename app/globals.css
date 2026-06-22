@@ -127,4 +127,8 @@
   html {
     @apply font-sans;
   }
+
+  .shadow-gold-glow {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+  }
 }
