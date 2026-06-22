@@ -245,6 +245,10 @@ export type GameAction =
       /** The player accepted the penalty and will draw the required cards. */
       type: "ACCEPT_PENALTY";
       playerId: number;
+    }
+  | {
+      /** Card animation has completed; advance to the next player's turn. */
+      type: "ANIMATION_DONE";
     };
 
 // ---------------------------------------------------------------------------
